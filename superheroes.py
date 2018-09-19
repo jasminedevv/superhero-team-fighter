@@ -2,15 +2,16 @@ import random
 
 class Ability: 
     def __init__(self, name, attack_strength):
+        # example: Big Strength
         self.name = name
+        # example: 300
         self.attack_strength = attack_strength
-        return 1
-        # stuff
     def attack(self):
-        return 1
-        # Return attack value
+        min_attack = self.attack_strength // 2
+        max_attack = self.attack_strength
+        return random.randint(min_attack, max_attack)
     def update_attack(self, attack_strength):
-        return 1
+        self.attack_strength = attack_strength
         # Update attack value
 
 class Weapon(Ability):
@@ -20,26 +21,28 @@ class Weapon(Ability):
         between 0 and the full attack power of the weapon.
         Hint: The attack power is inherited.
         """
+        # i've got the sneaking suspicion this is one simple ass line of code like this
+        return random.randint(0, self.attack_strength)
+        # well it passes but idk where it's pulling attack_strength from
 
 class Hero: 
-    def init(self, name): 
-        self.name = name
-        return 1
-        # Initialize starting values
-    def attack(self):
-        return 1
-    # Calculate lowest attack value as an integer.
-    # Use random.randint(a, b) to select a random attack value.
-    # Return attack value between 0 and the full attack.
-    def add_ability(self, ability):
-        return 1
-        # Append ability to self.abilities
     def __init__(self, name): 
         self.abilities = list() 
         self.name = name
 
+        # Initialize starting values
+    def attack(self):
+        total_damage = 0
+        for ability in self.abilities:
+            total_damage += ability.attack()
+        return total_damage
+    def add_ability(self, ability):
+        # no idea why this works
+        self.abilities.append(ability)
+        # Append ability to self.abilities
+
 class Team:
-    def init(self, team_name):
+    def __init__(self, team_name):
         """Instantiate resources."""
         self.name = team_name
         self.heroes = list()
@@ -72,8 +75,8 @@ random.randint(2, 7)
 def debug():
     hero = Hero("Wonder Woman") 
     print(hero.attack()) 
-    ability = Ability("Divine Speed", 300) 
-    hero.add_ability(ability) 
+    divine_speed = Ability("Divine Speed", 300) 
+    hero.add_ability(divine_speed) 
     print(hero.attack()) 
     new_ability = Ability("Super Human Strength", 800) 
     hero.add_ability(new_ability) 

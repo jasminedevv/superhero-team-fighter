@@ -16,19 +16,20 @@ def capture_console_output(function_body):
 
 # Test Abilities Class
 
-
+# oh I think this just tests if it exists
+# passing
 def test_ability_instance():
     # Test instantiation without error
     big_strength = superheroes.Ability("Overwhelming Strength", 300)
     assert big_strength
 
-
+# passing
 def test_ability_name():
     # Test for Correct Name
     big_strength = superheroes.Ability("Overwhelming Strength", 300)
     assert big_strength.name == "Overwhelming Strength"
 
-
+# passing
 def test_ability_update_attack():
     big_strength = superheroes.Ability("Overwhelming Strength", 300)
     big_strength.update_attack(400)
@@ -38,7 +39,7 @@ def test_ability_update_attack():
         attack += big_strength.attack()
     assert attack <= (400 * test_runs) and attack >= (200 * test_runs)
 
-
+# passing
 def test_ability_attack():
     # Test for correct attack value
     test_runs = 100
@@ -49,12 +50,12 @@ def test_ability_attack():
 
 # Test Weapons Class
 
-
+# passing
 def test_weapon_instance():
     big_stick = superheroes.Weapon("Overwhelming Stick", 200)
     assert "Weapon" in str(big_stick)
 
-
+# passing
 def test_weapon_attack():
     big_stick = superheroes.Weapon("Overwhelming Stick", 200)
     test_runs = 100
@@ -64,12 +65,12 @@ def test_weapon_attack():
 
 # Test Heroes Class
 
-
+# passing
 def test_hero_instance():
     Athena = superheroes.Hero("Athena")
     assert Athena
 
-
+# passing
 def test_hero_add_ability():
     big_strength = superheroes.Ability("Overwhelming Strength", 300)
     Athena = superheroes.Hero("Athena")
@@ -80,7 +81,7 @@ def test_hero_add_ability():
     assert "Ability" in str(Athena.abilities[0])
     assert Athena.abilities[0].name == "Overwhelming Strength"
 
-
+# passing
 def test_hero_add_multi_ability():
     big_strength = superheroes.Ability("Overwhelming Strength", 300)
     speed = superheroes.Ability("Lightning Speed", 500)
@@ -94,7 +95,7 @@ def test_hero_add_multi_ability():
     assert "Ability" in str(Athena.abilities[0])
     assert Athena.abilities[0].name == "Overwhelming Strength"
 
-
+# passing
 def test_hero_attack_ability():
     big_strength = superheroes.Ability("Overwhelming Strength", 30000)
     athena = superheroes.Hero("Athena")
@@ -103,7 +104,7 @@ def test_hero_attack_ability():
     attack = athena.attack()
     assert attack <= 30000 and attack >= 15000
 
-
+# passing
 def test_hero_attack_weapon():
     big_strength = superheroes.Ability("Overwhelming Strength", 200)
     Athena = superheroes.Hero("Athena")
@@ -113,7 +114,7 @@ def test_hero_attack_weapon():
         attack = big_strength.attack()
         assert attack <= 200 and attack >= 0
 
-
+# passing
 def test_hero_multi_weapon_attack():
     strength = superheroes.Weapon("Overwhelming Strength", 200)
     sword_of_truth = superheroes.Weapon("Sword of Truth", 700)
@@ -127,7 +128,7 @@ def test_hero_multi_weapon_attack():
         attack = Athena.attack()
         assert attack <= 900 and attack >= 0
 
-
+# passing
 def test_hero_weapon_ability_attack():
     quickness = superheroes.Ability("Quickness", 1300)
     sword_of_truth = superheroes.Weapon("Sword of Truth", 700)
@@ -137,7 +138,7 @@ def test_hero_weapon_ability_attack():
     assert len(Athena.abilities) == 2
     attack_avg(Athena, 0, 2000)
 
-
+# passing
 def attack_avg(object, low, high):
     test_runs = 100
     for _ in range(0, test_runs):
@@ -146,17 +147,17 @@ def attack_avg(object, low, high):
 
 # Test Teams
 
-
+# failing
 def test_team_instance():
     team = superheroes.Team("One")
     assert team
 
-
+# failing
 def test_team_name():
     team = superheroes.Team("One")
     assert team.name == "One"
 
-
+# failing
 def test_team_hero():
     team = superheroes.Team("One")
     jodie = superheroes.Hero("Jodie Foster")
@@ -164,7 +165,7 @@ def test_team_hero():
     assert len(team.heroes) == 1
     assert team.heroes[0].name == "Jodie Foster"
 
-
+# failing
 def test_team_remove_hero():
     team = superheroes.Team("One")
     jodie = superheroes.Hero("Jodie Foster")
@@ -173,7 +174,7 @@ def test_team_remove_hero():
     team.remove_hero("Jodie Foster")
     assert len(team.heroes) == 0
 
-
+# failing
 def test_team_remove_unlisted():
     # Test that if no results found return 0
     team = superheroes.Team("One")
@@ -182,12 +183,12 @@ def test_team_remove_unlisted():
     code = team.remove_hero("Athena")
     assert code == 0
 
-
+# failing
 def test_team_remove_empty_list():
     team = superheroes.Team("One")
     assert team.remove_hero("Athena") == 0
 
-
+# failing
 def test_find_hero():
     team = superheroes.Team("One")
     jodie = superheroes.Hero("Jodie Foster")
@@ -195,19 +196,19 @@ def test_find_hero():
     hero = team.find_hero("Jodie Foster")
     assert hero.name == "Jodie Foster"
 
-
+# failing
 def test_find_unlisted_hero():
     team = superheroes.Team("One")
     jodie = superheroes.Hero("Jodie Foster")
     team.add_hero(jodie)
     assert team.find_hero("Alexa") == 0
 
-
+# failing
 def test_find_empty_hero():
     team = superheroes.Team("One")
     assert team.find_hero("Alexa") == 0
 
-
+# failing
 def test_print_heroes():
     team = superheroes.Team("One")
     jodie = superheroes.Hero("Jodie Foster")
