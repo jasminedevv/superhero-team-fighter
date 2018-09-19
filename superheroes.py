@@ -3,6 +3,7 @@ import random
 class Ability: 
     def __init__(self, name, attack_strength):
         self.name = name
+        self.attack_strength = attack_strength
         return 1
         # stuff
     def attack(self):
@@ -20,17 +21,18 @@ class Weapon(Ability):
         Hint: The attack power is inherited.
         """
 
-class Hero: def init(self, name): # Initialize starting values
-    def add_ability(self, ability):
-        # Add ability to abilities list
-
+class Hero: 
+    def init(self, name): 
+        self.name = name
+        return 1
+        # Initialize starting values
     def attack(self):
+        return 1
     # Calculate lowest attack value as an integer.
     # Use random.randint(a, b) to select a random attack value.
     # Return attack value between 0 and the full attack.
-    if name == "main": 
-        # If you run this file from the terminal this block is executed.
     def add_ability(self, ability):
+        return 1
         # Append ability to self.abilities
     def __init__(self, name): 
         self.abilities = list() 
@@ -43,27 +45,31 @@ class Team:
         self.heroes = list()
 
     def add_hero(self, Hero):
+        return 1
         """Add Hero object to heroes list."""
 
     def remove_hero(self, name):
+        return 1
         """
         Remove hero from heroes list.
         If Hero isn't found return 0.
         """
 
     def find_hero(self, name):
+        return 1
         """
         Find and return hero from heroes list.
         If Hero isn't found return 0.
         """
 
     def view_all_heroes(self):
+        return 1
         """Print out all heroes to the console."""
 
 # Lost functions
 random.randint(2, 7)
 
-def test():
+def debug():
     hero = Hero("Wonder Woman") 
     print(hero.attack()) 
     ability = Ability("Divine Speed", 300) 
@@ -74,4 +80,5 @@ def test():
     print(hero.attack())
 
 if __name__ == "__main__":
-    test()
+    print("I am running in debug mode. Call me from another file to use my classes.")
+    debug()
