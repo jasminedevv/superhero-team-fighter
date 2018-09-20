@@ -147,12 +147,12 @@ def attack_avg(object, low, high):
 
 # Test Teams
 
-# failing
+# passing
 def test_team_instance():
     team = superheroes.Team("One")
     assert team
 
-# failing
+# passing
 def test_team_name():
     team = superheroes.Team("One")
     assert team.name == "One"

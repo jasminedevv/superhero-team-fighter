@@ -25,17 +25,44 @@ class Weapon(Ability):
         return random.randint(0, self.attack_strength)
         # well it passes but idk where it's pulling attack_strength from
 
+class Armor:
+    def __init__(self, name, defense):
+        # Instantiate name and defense strength
+        self.name = name
+        self.defense = defense
+
+    def defend(self):
+        return random.randint(0, self.defense)
+
+
 class Hero: 
-    def __init__(self, name): 
+    def __init__(self, name, health=100): 
         self.abilities = list() 
         self.name = name
+        self.armors = list()
+        self.start_health = health
+        self.health = health
+        self.deaths = 0
+        self.kills = 0
 
-        # Initialize starting values
+    def defend(self):
+        armor = 0
+        for item in self.armors:
+            armor += item.defense
+        return armor
+
+    def take_damage(self, damage_amt):
+        self.health -= damage_amt
+
+    def add_kill(self, num_kills):
+        self.kills += num_kills
+
     def attack(self):
         total_damage = 0
         for ability in self.abilities:
             total_damage += ability.attack()
         return total_damage
+
     def add_ability(self, ability):
         # no idea why this works
         self.abilities.append(ability)
@@ -48,30 +75,28 @@ class Team:
         self.heroes = list()
 
     def add_hero(self, Hero):
-        return 1
-        """Add Hero object to heroes list."""
+        self.heroes.append(Hero)
 
     def remove_hero(self, name):
-        return 1
+        return False
         """
         Remove hero from heroes list.
         If Hero isn't found return 0.
         """
 
     def find_hero(self, name):
-        return 1
+        return False
         """
         Find and return hero from heroes list.
         If Hero isn't found return 0.
         """
 
     def view_all_heroes(self):
-        return 1
-        """Print out all heroes to the console."""
+        for hero in self.heroes:
+            print(hero.name)
+            return hero.name
 
-# Lost functions
-random.randint(2, 7)
-
+# debug stuff
 def debug():
     hero = Hero("Wonder Woman") 
     print(hero.attack()) 
@@ -81,7 +106,14 @@ def debug():
     new_ability = Ability("Super Human Strength", 800) 
     hero.add_ability(new_ability) 
     print(hero.attack())
+    team = Team("One")
+    jodie = Hero("Jodie Foster")
+    team.add_hero(jodie)
+    athena = Hero("Athena")
+    team.add_hero(athena)
+    print(team.view_all_heroes())
 
+# runs if called directly
 if __name__ == "__main__":
     print("I am running in debug mode. Call me from another file to use my classes.")
     debug()
