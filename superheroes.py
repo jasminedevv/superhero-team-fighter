@@ -74,27 +74,79 @@ class Team:
         self.name = team_name
         self.heroes = list()
 
-    def add_hero(self, Hero):
-        self.heroes.append(Hero)
+    def add_hero(self, hero):
+        print("hero added:", hero.name)
+        self.heroes.append(hero)
+        print("new hero list:", self.heroes)
 
     def remove_hero(self, name):
-        return False
+        print("attempting to remove hero:", name)
+        if self.heroes == []:
+            print("Error: there are no heroes in this list")
+            return 0
+        for myhero in self.heroes:
+            print("made it to the for loop")
+            if myhero.name == name:
+                print("found hero to remove:", myhero.name)
+                self.heroes.remove(myhero)
+            else:
+                print("hero not found")
+                return 0
+
         """
         Remove hero from heroes list.
         If Hero isn't found return 0.
         """
 
     def find_hero(self, name):
-        return False
+        print("looking for hero:", name)
+        if self.heroes == []:
+            print("Error: there are no heroes in this list")
+            return 0
+        for myhero in self.heroes:
+            if myhero.name == name:
+                print("hero found:", myhero.name)
+                return myhero
+            else:
+                print("hero not found")
+                return 0
         """
         Find and return hero from heroes list.
         If Hero isn't found return 0.
         """
 
     def view_all_heroes(self):
-        for hero in self.heroes:
-            print(hero.name)
-            return hero.name
+        for myhero in self.heroes:
+            print(myhero.name)
+
+class Arena:
+    def __init__(self):
+        """
+        self.team_one = None
+        self.team_two = None
+        """
+
+    def build_team_one(self):
+        """
+        This method should allow a user to build team one.
+        """
+
+    def build_team_two(self):
+        """
+        This method should allow user to build team two.
+        """
+
+    def team_battle(self):
+        """
+        This method should continue to battle teams until 
+        one or both teams are dead.
+        """
+
+    def show_stats(self):
+        """
+        This method should print out the battle statistics 
+        including each heroes kill/death ratio.
+        """
 
 # debug stuff
 def debug():

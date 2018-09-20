@@ -7,8 +7,5 @@
   "test_battle.py::test_team_attack": true,
   "test_battle.py::test_team_attack_deaths": true,
   "test_battle.py::test_team_attack_kills": true,
-  "test_battle.py::test_team_defend": true,
-  "test_heroes.py::test_find_hero": true,
-  "test_heroes.py::test_print_heroes": true,
-  "test_heroes.py::test_team_remove_hero": true
+  "test_battle.py::test_team_defend": true
 }
