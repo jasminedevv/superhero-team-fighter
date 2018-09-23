@@ -1,7 +1,5 @@
 {
   "hero-test.py": true,
   "test_battle.py::test_revive_heroes": true,
-  "test_battle.py::test_team_attack_deaths": true,
-  "test_battle.py::test_team_attack_kills": true,
   "test_battle.py::test_team_defend": true
 }

@@ -46,6 +46,11 @@ class Hero:
 
     def take_damage(self, damage_amt):
         self.health -= damage_amt
+        print(self.name, "has taken", damage_amt, "damage")
+        if self.health <= 0:
+            print(self.name, "has fallen!")
+            self.deaths += 1
+            print(self.deaths)
 
     def add_kill(self, num_kills):
         self.kills += num_kills
@@ -70,14 +75,27 @@ class Team:
         """Instantiate resources."""
         self.name = team_name
         self.heroes = list()
+        # self.deaths = 0
+
+    def defend(self, damage):
+        team_defense = 0
+        for hero in self.heroes:
+            team_defense += hero.defend()
+        return team_defense
 
     def attack(self, opposing_team):
         total_damage = 0
         for hero in self.heroes:
             total_damage += hero.attack()
         dps = total_damage / len(opposing_team.heroes)
+        our_kills = 0
         for hero in opposing_team.heroes:
             hero.take_damage(dps)
+            if hero.deaths > 0:
+                our_kills += 1
+        for hero in self.heroes:
+            hero.kills += our_kills
+        return total_damage
 
     def add_hero(self, hero):
         print("\nhero added:", hero.name)
@@ -129,28 +147,30 @@ class Arena:
         self.team_two = list()
 
     def build_team_one(self):
-        print("Build your team! Choose wisely from the following list. You get 3 heroes.")
+        self.team_one = Team("Red Team")
+        # print("Build your team! Choose wisely from the following list. You get 3 heroes.")
         # this is some top shit code below
         # note: make more DRY and plan for user messing up multiple times
-        print(available_heroes_string)
-        choice1 = input("Your First Choice > ")
-        if choice1 not in available_heroes_string:
-            choice1 = input("That is not an option. Please try again > ")
+        # print(available_heroes_string)
+        # choice1 = input("Your First Choice > ")
+        # if choice1 not in available_heroes_string:
+        #     choice1 = input("That is not an option. Please try again > ")
         # choice2 = input("Your Second Choice > ")
         # if choice2 not in available_heroes_string:
         #     choice1 = input("That is not an option. Please try again > ")
         # choice3 = input("Your Third Choice > ")
         # if choice3 not in available_heroes_string:
         #     choice3 = input("That is not an option. Please try again > ")
-        self.team_one.append(choice1)
+        # self.team_one.append(choice1)
         # self.team_one.add_hero(choice2)
         # self.team_one.add_hero(choice3)
-        print("You have chosen", choice1, "as your hero.")
+        # print("You have chosen", choice1, "as your hero.")
         """
         This method should allow a user to build team one.
         """
 
     def build_team_two(self):
+        self.team_two = Team("Blue Team")
         # why do these have to be different functions that makes no sense
         """
         This method should allow user to build team two.
