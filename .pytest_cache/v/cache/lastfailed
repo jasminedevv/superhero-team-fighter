@@ -1,10 +1,6 @@
 {
   "hero-test.py": true,
-  "test_battle.py::test_hero_defend_multi_armor": true,
-  "test_battle.py::test_hero_defense": true,
-  "test_battle.py::test_hero_equip_armor": true,
   "test_battle.py::test_revive_heroes": true,
-  "test_battle.py::test_team_attack": true,
   "test_battle.py::test_team_attack_deaths": true,
   "test_battle.py::test_team_attack_kills": true,
   "test_battle.py::test_team_defend": true

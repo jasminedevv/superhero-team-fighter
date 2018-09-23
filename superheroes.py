@@ -16,14 +16,7 @@ class Ability:
 
 class Weapon(Ability):
     def attack(self):
-        """
-        This method should should return a random value
-        between 0 and the full attack power of the weapon.
-        Hint: The attack power is inherited.
-        """
-        # i've got the sneaking suspicion this is one simple ass line of code like this
         return random.randint(0, self.attack_strength)
-        # well it passes but idk where it's pulling attack_strength from
 
 class Armor:
     def __init__(self, name, defense):
@@ -64,9 +57,13 @@ class Hero:
         return total_damage
 
     def add_ability(self, ability):
-        # no idea why this works
         self.abilities.append(ability)
         # Append ability to self.abilities
+
+    def add_armor(self, armor):
+        self.armors.append(armor)
+
+
 
 class Team:
     def __init__(self, team_name):
@@ -74,20 +71,27 @@ class Team:
         self.name = team_name
         self.heroes = list()
 
+    def attack(self, opposing_team):
+        total_damage = 0
+        for hero in self.heroes:
+            total_damage += hero.attack()
+        dps = total_damage / len(opposing_team.heroes)
+        for hero in opposing_team.heroes:
+            hero.take_damage(dps)
+
     def add_hero(self, hero):
-        print("hero added:", hero.name)
+        print("\nhero added:", hero.name)
         self.heroes.append(hero)
-        print("new hero list:", self.heroes)
+        # print("\nnew hero list:", self.heroes)
 
     def remove_hero(self, name):
         print("attempting to remove hero:", name)
         if self.heroes == []:
-            print("Error: there are no heroes in this list")
+            print("\nError: there are no heroes in this list")
             return 0
         for myhero in self.heroes:
-            print("made it to the for loop")
             if myhero.name == name:
-                print("found hero to remove:", myhero.name)
+                print("\nfound hero to remove:", myhero.name)
                 self.heroes.remove(myhero)
             else:
                 print("hero not found")
@@ -101,14 +105,14 @@ class Team:
     def find_hero(self, name):
         print("looking for hero:", name)
         if self.heroes == []:
-            print("Error: there are no heroes in this list")
+            print("\nError: there are no heroes in this list")
             return 0
         for myhero in self.heroes:
             if myhero.name == name:
-                print("hero found:", myhero.name)
+                print("\nhero found:", myhero.name)
                 return myhero
             else:
-                print("hero not found")
+                print("\nhero not found")
                 return 0
         """
         Find and return hero from heroes list.
@@ -121,17 +125,33 @@ class Team:
 
 class Arena:
     def __init__(self):
-        """
-        self.team_one = None
-        self.team_two = None
-        """
+        self.team_one = list()
+        self.team_two = list()
 
     def build_team_one(self):
+        print("Build your team! Choose wisely from the following list. You get 3 heroes.")
+        # this is some top shit code below
+        # note: make more DRY and plan for user messing up multiple times
+        print(available_heroes_string)
+        choice1 = input("Your First Choice > ")
+        if choice1 not in available_heroes_string:
+            choice1 = input("That is not an option. Please try again > ")
+        # choice2 = input("Your Second Choice > ")
+        # if choice2 not in available_heroes_string:
+        #     choice1 = input("That is not an option. Please try again > ")
+        # choice3 = input("Your Third Choice > ")
+        # if choice3 not in available_heroes_string:
+        #     choice3 = input("That is not an option. Please try again > ")
+        self.team_one.append(choice1)
+        # self.team_one.add_hero(choice2)
+        # self.team_one.add_hero(choice3)
+        print("You have chosen", choice1, "as your hero.")
         """
         This method should allow a user to build team one.
         """
 
     def build_team_two(self):
+        # why do these have to be different functions that makes no sense
         """
         This method should allow user to build team two.
         """
@@ -148,6 +168,36 @@ class Arena:
         including each heroes kill/death ratio.
         """
 
+# def createAbilities():
+ability1 = Ability("Kindness", 100)
+ability2 = Ability("Social Skills", 200)
+ability3 = Ability("Cooking", 300)
+ability4 = Ability("Sleeping Well Every Night", 400)
+ability5 = Ability("Hard Work", 500)
+ability6 = Ability("Debugging", 600)
+
+# def createBlueHeroes():
+hero1 = Hero("Stephanie")
+hero1.add_ability(ability1)
+hero2 = Hero("Max")
+hero2.add_ability(ability2)
+hero3 = Hero("Donny")
+hero3.add_ability(ability3)
+
+# def createRedHeroes():
+hero4 = Hero("Luke")
+hero4.add_ability(ability4)
+hero5 = Hero("Faith")
+hero5.add_ability(ability5)
+hero6 = Hero("Cherish")
+hero6 = Hero(ability6)
+
+available_heroes = [hero1, hero2, hero3, hero4, hero5, hero6]
+available_heroes_string = [hero1.name, hero2.name, hero3.name, hero4.name, hero5.name, hero6.name]
+
+myarena = Arena()
+print("myarena is of type: ", type(myarena))
+# myarena.build_team_one()
 # debug stuff
 def debug():
     hero = Hero("Wonder Woman") 
@@ -168,4 +218,4 @@ def debug():
 # runs if called directly
 if __name__ == "__main__":
     print("I am running in debug mode. Call me from another file to use my classes.")
-    debug()
+    # debug()
