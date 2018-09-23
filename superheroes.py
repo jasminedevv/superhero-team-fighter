@@ -195,36 +195,6 @@ class Arena:
         including each heroes kill/death ratio.
         """
 
-# def createAbilities():
-ability1 = Ability("Kindness", 100)
-ability2 = Ability("Social Skills", 200)
-ability3 = Ability("Cooking", 300)
-ability4 = Ability("Sleeping Well Every Night", 400)
-ability5 = Ability("Hard Work", 500)
-ability6 = Ability("Debugging", 600)
-
-# def createBlueHeroes():
-hero1 = Hero("Stephanie")
-hero1.add_ability(ability1)
-hero2 = Hero("Max")
-hero2.add_ability(ability2)
-hero3 = Hero("Donny")
-hero3.add_ability(ability3)
-
-# def createRedHeroes():
-hero4 = Hero("Luke")
-hero4.add_ability(ability4)
-hero5 = Hero("Faith")
-hero5.add_ability(ability5)
-hero6 = Hero("Cherish")
-hero6 = Hero(ability6)
-
-available_heroes = [hero1, hero2, hero3, hero4, hero5, hero6]
-available_heroes_string = [hero1.name, hero2.name, hero3.name, hero4.name, hero5.name, hero6.name]
-
-myarena = Arena()
-print("myarena is of type: ", type(myarena))
-# myarena.build_team_one()
 # debug stuff
 def debug():
     hero = Hero("Wonder Woman") 
