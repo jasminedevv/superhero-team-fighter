@@ -78,10 +78,13 @@ class Team:
         # self.deaths = 0
 
     def defend(self, damage):
-        team_defense = 0
+        dps = damage / len(self.heroes)
+        deaths = 0
         for hero in self.heroes:
-            team_defense += hero.defend()
-        return team_defense
+            hero.health -= (dps - hero.defend())
+            if hero.health <= 0:
+                deaths += 1
+        return deaths
 
     def attack(self, opposing_team):
         total_damage = 0
@@ -96,6 +99,10 @@ class Team:
         for hero in self.heroes:
             hero.kills += our_kills
         return total_damage
+
+    def revive_heroes(self):
+        for hero in self.heroes:
+            hero.health = 60
 
     def add_hero(self, hero):
         print("\nhero added:", hero.name)
