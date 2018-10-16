@@ -1,16 +1,1 @@
-[
-  "test_battle.py::test_armor",
-  "test_battle.py::test_hero_default_health",
-  "test_battle.py::test_hero_init_new_health",
-  "test_battle.py::test_hero_start_health",
-  "test_battle.py::test_hero_defense",
-  "test_battle.py::test_dead_hero_defense",
-  "test_battle.py::test_hero_equip_armor",
-  "test_battle.py::test_hero_defend_multi_armor",
-  "test_battle.py::test_hero_attack",
-  "test_battle.py::test_team_attack",
-  "test_battle.py::test_team_attack_kills",
-  "test_battle.py::test_team_attack_deaths",
-  "test_battle.py::test_team_defend",
-  "test_battle.py::test_revive_heroes"
-]
+[]
